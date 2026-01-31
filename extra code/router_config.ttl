@@ -1,0 +1,206 @@
+; ============================================================
+; Tera Term Macro - Cisco Router Configuration Script
+; Configures router with security settings, SSH, IPv4/IPv6
+; ============================================================
+
+; Wait for router prompt and enter privileged EXEC mode
+wait '>'
+sendln 'enable'
+
+; If password is required for enable, uncomment and set:
+; wait 'Password:'
+; sendln 'your_enable_password'
+
+wait '#'
+
+; ============================================================
+; Enter Global Configuration Mode
+; ============================================================
+sendln 'configure terminal'
+wait '(config)#'
+
+; ============================================================
+; c. Assign device name to router (change as needed)
+; ============================================================
+sendln 'hostname R1'
+wait '(config)#'
+
+; ============================================================
+; d. Set domain name
+; ============================================================
+sendln 'ip domain name ccna-lab.com'
+wait '(config)#'
+
+; ============================================================
+; e. Disable DNS lookup
+; ============================================================
+sendln 'no ip domain lookup'
+wait '(config)#'
+
+; ============================================================
+; f. Encrypt plaintext passwords
+; ============================================================
+sendln 'service password-encryption'
+wait '(config)#'
+
+; ============================================================
+; g. Require minimum 12-character password
+; ============================================================
+sendln 'security passwords min-length 12'
+wait '(config)#'
+
+; ============================================================
+; h. Configure username SSHadmin with encrypted password
+; ============================================================
+sendln 'username SSHadmin secret 55Hadm!n2020'
+wait '(config)#'
+
+; ============================================================
+; i. Generate RSA crypto keys with 1024 bit modulus
+; ============================================================
+; Note: Requires hostname and domain-name to be set first
+pause 1
+sendln 'crypto key generate rsa general-keys modulus 1024'
+wait '(config)#'
+
+; ============================================================
+; j. Set privileged EXEC (enable secret) password
+; ============================================================
+sendln 'enable secret $cisco!PRIV*'
+wait '(config)#'
+
+; ============================================================
+; k. Configure console line
+;    - Password: $cisco!!CON*
+;    - Timeout: 4 minutes
+;    - Enable login
+; ============================================================
+sendln 'line console 0'
+wait '(config-line)#'
+sendln 'password $cisco!!CON*'
+wait '(config-line)#'
+sendln 'exec-timeout 4 0'
+wait '(config-line)#'
+sendln 'login'
+wait '(config-line)#'
+sendln 'exit'
+wait '(config)#'
+
+; ============================================================
+; l. Configure VTY lines
+;    - Password: $cisco!!VTY*
+;    - SSH only
+;    - Timeout: 4 minutes
+;    - Login using local database
+; ============================================================
+sendln 'line vty 0 4'
+wait '(config-line)#'
+sendln 'password $cisco!!VTY*'
+wait '(config-line)#'
+sendln 'transport input ssh'
+wait '(config-line)#'
+sendln 'exec-timeout 4 0'
+wait '(config-line)#'
+sendln 'login local'
+wait '(config-line)#'
+sendln 'exit'
+wait '(config)#'
+
+; ============================================================
+; m. Create warning banner (MOTD)
+; ============================================================
+sendln 'banner motd $ Unauthorized Access is Prohibited! All activities are logged and monitored. $'
+wait '(config)#'
+
+; ============================================================
+; n. Enable IPv6 Routing
+; ============================================================
+sendln 'ipv6 unicast-routing'
+wait '(config)#'
+
+; ============================================================
+; o. Configure interfaces with IPv4/IPv6 addressing
+;    MODIFY THESE VALUES based on your addressing table!
+; ============================================================
+
+; --- Interface GigabitEthernet0/0/0 ---
+sendln 'interface GigabitEthernet0/0/0'
+wait '(config-if)#'
+sendln 'description Connection to LAN 1'
+wait '(config-if)#'
+sendln 'ip address 192.168.0.1 255.255.255.0'
+wait '(config-if)#'
+sendln 'ipv6 address 2001:db8:acad::1/64'
+wait '(config-if)#'
+sendln 'ipv6 address fe80::1 link-local'
+wait '(config-if)#'
+sendln 'no shutdown'
+wait '(config-if)#'
+sendln 'exit'
+wait '(config)#'
+
+; --- Interface GigabitEthernet0/0/1 ---
+sendln 'interface GigabitEthernet0/0/1'
+wait '(config-if)#'
+sendln 'description Connection to LAN 2'
+wait '(config-if)#'
+sendln 'ip address 192.168.1.1 255.255.255.0'
+wait '(config-if)#'
+sendln 'ipv6 address 2001:db8:acad:1::1/64'
+wait '(config-if)#'
+sendln 'ipv6 address fe80::1 link-local'
+wait '(config-if)#'
+sendln 'no shutdown'
+wait '(config-if)#'
+sendln 'exit'
+wait '(config)#'
+
+; --- Interface Serial0/1/0 (or GigabitEthernet0/0/2) ---
+sendln 'interface Loopback0'
+wait '(config-if)#'
+sendln 'description Connection to WAN'
+wait '(config-if)#'
+sendln 'ip address 10.0.0.1 255.255.255.252'
+wait '(config-if)#'
+sendln 'ipv6 address 2001:db8:acad:2::1/64'
+wait '(config-if)#'
+sendln 'ipv6 address fe80::1 link-local'
+wait '(config-if)#'
+sendln 'no shutdown'
+wait '(config-if)#'
+sendln 'exit'
+wait '(config)#'
+
+; ============================================================
+; p. Block VTY logins for 2 minutes after 3 failed attempts in 60 seconds
+; ============================================================
+sendln 'login block-for 120 attempts 3 within 60'
+wait '(config)#'
+
+; ============================================================
+; Exit configuration mode
+; ============================================================
+sendln 'end'
+wait '#'
+
+; ============================================================
+; q. Set the clock on the router (adjust date/time as needed)
+; ============================================================
+sendln 'clock set 12:00:00 28 Jan 2026'
+wait '#'
+
+; ============================================================
+; r. Save running configuration to startup configuration
+; ============================================================
+sendln 'copy running-config startup-config'
+wait 'Destination filename'
+sendln ''
+wait '#'
+
+; ============================================================
+; Display confirmation
+; ============================================================
+sendln 'show running-config'
+
+; Script complete message
+messagebox 'Router configuration complete!' 'Success'

@@ -1,0 +1,93 @@
+; Tera Term Macro - Wipe Switch/Router Memory & Configure IP
+; This macro erases startup-config, vlan.dat, reloads the device,
+; and configures IP address, subnet mask, and default gateway
+
+; ============================================
+; CONFIGURATION VARIABLES - EDIT THESE VALUES
+; ============================================
+ip_address = '192.168.1.1'
+subnet_mask = '255.255.255.0'
+default_gateway = '192.168.1.254'
+interface = 'GigabitEthernet0/0'
+; ============================================
+
+; Prompt user for IP settings (comment out if using hardcoded values above)
+inputbox 'Enter IP Address:' 'IP Configuration'
+ip_address = inputstr
+inputbox 'Enter Subnet Mask:' 'IP Configuration'
+subnet_mask = inputstr
+inputbox 'Enter Default Gateway:' 'IP Configuration'
+default_gateway = inputstr
+inputbox 'Enter Interface (e.g., GigabitEthernet0/0, Vlan1):' 'IP Configuration'
+interface = inputstr
+
+; Wait for device prompt
+wait '#' '>'
+
+; Enter privileged exec mode if needed
+sendln 'enable'
+wait '#'
+
+; ============================================
+; WIPE DEVICE MEMORY
+; ============================================
+
+; Erase startup configuration
+sendln 'write erase'
+wait 'confirm'
+sendln ''
+wait '#'
+
+; ============================================
+; CONFIGURE IP ADDRESS SETTINGS
+; ============================================
+
+; Enter global configuration mode
+sendln 'configure terminal'
+wait '(config)#'
+
+; Configure the interface
+sprintf2 cmd 'interface %s' interface
+sendln cmd
+wait '(config-if)#'
+
+; Set IP address and subnet mask
+sprintf2 cmd 'ip address %s %s' ip_address subnet_mask
+sendln cmd
+wait '(config-if)#'
+
+; Enable the interface
+sendln 'no shutdown'
+wait '(config-if)#'
+
+; Exit interface configuration
+sendln 'exit'
+wait '(config)#'
+
+; Configure default gateway (for switches/Layer 2 devices)
+sprintf2 cmd 'ip default-gateway %s' default_gateway
+sendln cmd
+wait '(config)#'
+
+; Exit configuration mode
+sendln 'end'
+wait '#'
+
+; Save the configuration
+sendln 'write memory'
+wait '#'
+
+; ============================================
+; RELOAD DEVICE
+; ============================================
+
+; Reload the device
+sendln 'reload'
+wait 'confirm' 'Save' 'save'
+sendln 'no'
+wait 'confirm' 'Proceed'
+sendln ''
+
+; Display completion message
+sprintf2 msg 'Device configured with:\nIP: %s\nMask: %s\nGateway: %s\n\nDevice will reload now.' ip_address subnet_mask default_gateway
+messagebox msg 'Configuration Complete'

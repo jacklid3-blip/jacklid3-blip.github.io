@@ -1,0 +1,95 @@
+{
+  "conversations": [
+    {
+      "timestamp": "2026-01-20T14:55:43.504555",
+      "user_input": "hi",
+      "response": "Hi there! How can I assist you today?",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:55:49.216676",
+      "user_input": "whats 2-2",
+      "response": "2 minus 2 equals 0.",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:56:00.797398",
+      "user_input": "is this using gpt?",
+      "response": "Yes, I’m based on the GPT model! How can I assist you today?",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:56:19.744705",
+      "user_input": "freddy fazbear",
+      "response": "Freddy Fazbear is a character from the \"Five Nights at Freddy's\" video game series. He's the main animatronic and a mascot of Freddy Fazbear's Pizza, a fictional family restaurant. The games revolve around survival horror elements and the mysterious events surrounding the animatronics. Are you a fan of the series?",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:56:25.786017",
+      "user_input": "yes",
+      "response": "It seems like you might want to talk about something romantic! What’s on your mind?",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:56:38.172289",
+      "user_input": "mike",
+      "response": "It seems like you might be referring to someone named Mike. How can I assist you with that?",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:56:50.560120",
+      "user_input": "who is mike afton",
+      "response": "Mike Afton is a character from the \"Five Nights at Freddy's\" video game series. He is often associated with the game's lore as the son of William Afton, the main antagonist. Mike is typically portrayed as a security guard trying to survive the haunted animatronics. His character evolves throughout the series, revealing connections to the game's deeper story.",
+      "intent": "romantic"
+    },
+    {
+      "timestamp": "2026-01-20T14:57:32.749610",
+      "user_input": "who is the current president of the USA?",
+      "response": "As of October 2023, the current president of the USA is Joe Biden.",
+      "intent": "romantic"
+    }
+  ],
+  "learned_responses": {
+    "hi": {
+      "response": "Hi there! How can I assist you today?",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:55:43.504568"
+    },
+    "whats 2-2": {
+      "response": "2 minus 2 equals 0.",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:55:49.216697"
+    },
+    "is this using gpt?": {
+      "response": "Yes, I’m based on the GPT model! How can I assist you today?",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:56:00.797419"
+    },
+    "freddy fazbear": {
+      "response": "Freddy Fazbear is a character from the \"Five Nights at Freddy's\" video game series. He's the main animatronic and a mascot of Freddy Fazbear's Pizza, a fictional family restaurant. The games revolve around survival horror elements and the mysterious events surrounding the animatronics. Are you a fan of the series?",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:56:19.744723"
+    },
+    "yes": {
+      "response": "It seems like you might want to talk about something romantic! What’s on your mind?",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:56:25.786122"
+    },
+    "mike": {
+      "response": "It seems like you might be referring to someone named Mike. How can I assist you with that?",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:56:38.172308"
+    },
+    "who is mike afton": {
+      "response": "Mike Afton is a character from the \"Five Nights at Freddy's\" video game series. He is often associated with the game's lore as the son of William Afton, the main antagonist. Mike is typically portrayed as a security guard trying to survive the haunted animatronics. His character evolves throughout the series, revealing connections to the game's deeper story.",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:56:50.560136"
+    },
+    "who is the current president of the usa?": {
+      "response": "As of October 2023, the current president of the USA is Joe Biden.",
+      "intent": "romantic",
+      "timestamp": "2026-01-20T14:57:32.749630"
+    }
+  },
+  "last_sync": "2026-01-20T14:57:32.749636"
+}

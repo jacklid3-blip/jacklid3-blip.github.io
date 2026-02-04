@@ -15,8 +15,8 @@ html {
 }
 
 body {
-  width: 70%;
-  min-width: 800px;
+  width: 99%;
+  min-width: 0;
   margin: 0 auto;
 }
 
@@ -64,7 +64,7 @@ article,
 aside,
 footer,
 section {
-  background-color: #00ff0080;
+  background-color: #dfa81180;
   padding: 1%;
 }
 
@@ -107,6 +107,7 @@ nav a:focus {
 
 main {
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 

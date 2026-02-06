@@ -13,17 +13,25 @@
     -->
   </head>
   <body>
+    <!-- Page title -->
     <h1>Planet data table</h1>
+
+  <!-- Main data table -->
   <table>
+    <!-- Table caption with source link -->
     <caption>
       data about the planets in our solar system
       <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">nasa's planetary fact sheet - metric</a>
     </caption>
+
+    <!-- Column grouping for styling -->
     <colgroup>
     <col span="2" />
     <col class="column-border" />
     <col span="9" />
     </colgroup>
+
+    <!-- Table header row -->
     <thead>
       <tr>
         <td colspan="2"></td>
@@ -39,7 +47,10 @@
         <th scope="col">Notes</th>
       </tr>
     </thead>
+
+    <!-- Table body with planet data -->
     <tbody>
+      <!-- Terrestrial planets section (Mercury, Venus, Earth, Mars) -->
       <tr>
         <th colspan="2" rowspan="4" scope="rowgroup">Terrestrial planets</th>
         <th scope="row">Mercury</th>
@@ -89,8 +100,11 @@
         <td>2</td>
         <td>The red planet</td>
       </tr>
+
+      <!-- Jovian planets section -->
       <tr>
         <th rowspan="4" scope="rowgroup">Jovian planets</th>
+        <!-- Gas giants (Jupiter, Saturn) -->
         <th rowspan="2" scope="rowgroup">Gas giants</th>
         <th scope="row">Jupiter</th>
         <td>1898</td>
@@ -116,6 +130,7 @@
         <td></td>
       </tr>
       <tr>
+        <!-- Ice giants (Uranus, Neptune) -->
         <th rowspan="2" scope="rowgroup">Ice giants</th>
         <th scope="row">Uranus</th>
         <td>86.8</td>
@@ -140,6 +155,8 @@
         <td>14</td>
         <td></td>
       </tr>
+
+      <!-- Dwarf planets section -->
       <tr>
         <th colspan="2" scope="rowgroup">Dwarf planets*</th>
         <th scope="row">Pluto</th>

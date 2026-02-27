@@ -4,33 +4,40 @@ html {
 
 body {
   font: 1.2em / 1.5 system-ui;
+  padding: 20px;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #efefef;
 }
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  color: darkslategray;
+  font-size: 2rem;
+  border-bottom: 10px dotted purple;
 }
 
 h2 {
+  font-style: italic;
   font-size: 1.5em;
-  margin: 0.83em 0;
 }
 
 ul {
-  margin: 1em 0;
-  padding: 0;
-  list-style: none;
+  background-color: white;
+  padding: 30px;
+  border: 5px solid purple;
+  border-radius: 20px;
 }
 
 .job-title {
+  color: darkslategray;
   font-weight: bold;
 }
 
 a {
-  color: rgb(204, 0, 255);
-  text-decoration: none;
+  color: green;
 }
 
 a:hover, a:focus {
-  text-decoration: underline;
+  color: darkgreen;
+  text-decoration: none;
 }

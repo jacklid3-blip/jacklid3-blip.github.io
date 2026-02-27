@@ -1,12 +1,12 @@
 /* FUN STYLES  */
-
+@import "https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap";
 
 html {
-  
+  font-family: 'IBM Plex Serif', serif;
 }
 
 h1,h2{
-  
+  font-family: 'Bevan', cursive;
 }
 
 /* General setup */
@@ -45,24 +45,53 @@ footer p {
   text-align: center;
 }
 
+/* styling in general */
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+
+section h2+p {
+  text-indent: 2rem;
+}
+
+p, li {
+  line-height: 1.6;
+  margin-bottom: 0.5px;
+}
+
 /* styling for links */
 
 a {
-  color: #aa6666;
-  text-decoration: none;
+  outline: none;
 }
 
 a[href*="http"] {
-  color: #6666aa;
+  padding-right: 16px;
+  background: url("external-link-52.png") no-repeat right center;
+  background-size: 14px 14px;
 }
 
 a:link,a:visited {
   color: #aa6666;
 }
 
+a:focus, a:hover {
+  text-decoration: none;
+  color: #773333;
+}
+
 /* list styles */
 ul, ol {
-  padding-left: 20px;
+  margin: 1rem 0;
 }
 
 ul {
@@ -70,33 +99,40 @@ ul {
 }
 
 ol {
-  list-style-type: upper-roman;
+  list-style-type: lower-roman;
 }
 
 /* styling for navigation */
 
 nav ul {
-  display: flex;
-  gap: 20px;
-  padding: 0;
+  padding-left: 0;
 }
 
 nav li {
-  list-style: none;
+  list-style-type: none;
+  margin-bottom: 1rem;
 }
 
 nav li a {
-  padding: 10px 15px;
-  border: 2px solid #aa6666;
-  border-radius: 5px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  width: 100%;
+  display: inline-block;
+  text-transform: uppercase;
+  line-height: 3.5;
+  border: 1px solid #aa6666;
+  font-family: "Bevan", serif;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 nav li a:hover, nav li a:focus {
-  background-color: #aa6666;
+  background: #aa6666;
   color: white;
 }
 
 nav li a:active {
-  background-color: #6666aa;
+  background: black;
   color: white;
 }

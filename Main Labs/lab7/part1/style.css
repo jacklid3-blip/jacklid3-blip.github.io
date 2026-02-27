@@ -42,7 +42,7 @@ nav ul {
   padding: 0;
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 nav a {
@@ -55,8 +55,14 @@ nav a {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
 }
 
 .feature {
   width: 200px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 20px;
 }

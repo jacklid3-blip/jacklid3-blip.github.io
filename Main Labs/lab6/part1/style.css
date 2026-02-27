@@ -1,3 +1,14 @@
+/* FUN STYLES  */
+
+
+html {
+  
+}
+
+h1,h2{
+  
+}
+
 /* General setup */
 
 * {
@@ -32,4 +43,60 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+/* styling for links */
+
+a {
+  color: #aa6666;
+  text-decoration: none;
+}
+
+a[href*="http"] {
+  color: #6666aa;
+}
+
+a:link,a:visited {
+  color: #aa6666;
+}
+
+/* list styles */
+ul, ol {
+  padding-left: 20px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+/* styling for navigation */
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  padding: 10px 15px;
+  border: 2px solid #aa6666;
+  border-radius: 5px;
+}
+
+nav li a:hover, nav li a:focus {
+  background-color: #aa6666;
+  color: white;
+}
+
+nav li a:active {
+  background-color: #6666aa;
+  color: white;
 }

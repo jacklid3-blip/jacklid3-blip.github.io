@@ -9,32 +9,31 @@ function randomValueFromArray(array) {
   return array[random]; // Return random element
 }
 
+// Story text with placeholders
+const storyText = "It was 94 Fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
+
 // Arrays of random story elements
-const characters = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
-const places = ["the soup kitchen", "Disneyland", "the White House"];
-const events = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and slithered away"];
+const insertX = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
+const insertY = ["the soup kitchen", "Disneyland", "the White House"];
+const insertZ = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and slithered away"];
 
-// Partial return random string function
+// Event listener and result function definition
 
-function returnRandomStoryString() {
+generateBtn.addEventListener("click", result); // Call result when clicked
+
+function result() {
+  // Create a new story from the template
+  let newStory = storyText;
+
   // Get random elements from each array
-  const randomCharacter = randomValueFromArray(characters);
-  const randomPlace = randomValueFromArray(places);
-  const randomEvent = randomValueFromArray(events);
+  const xItem = randomValueFromArray(insertX);
+  const yItem = randomValueFromArray(insertY);
+  const zItem = randomValueFromArray(insertZ);
 
-  // Build story with placeholders replaced
-  let storyText = `It was 94 Fahrenheit outside, so ${randomCharacter} went for a walk. When they got to ${randomPlace}, they stared in horror for a few moments, then ${randomEvent}. Bob saw the whole thing, but was not surprised — ${randomCharacter} weighs 300 pounds, and it was a hot day.`;
-
-  return storyText;
-}
-
-// Event listener and partial generate function definition
-
-generateBtn.addEventListener("click", generateStory); // Call generateStory when clicked
-
-function generateStory() {
-  // Create a new random story
-  let newStory = returnRandomStoryString();
+  // Replace placeholders with random items
+  newStory = newStory.replaceAll(":insertx:", xItem);
+  newStory = newStory.replaceAll(":inserty:", yItem);
+  newStory = newStory.replaceAll(":insertz:", zItem);
 
   // Replace "Bob" with custom name if provided
   if (customName.value !== "") {
@@ -45,7 +44,7 @@ function generateStory() {
   // Convert to UK units if UK locale selected
   if (document.getElementById("uk").checked) {
     const weight = Math.round(300 / 14) + " stone";         // Convert pounds to stone
-    const temperature = Math.round((94 - 32) * 5 / 9) + " Celsius"; // Convert Fahrenheit to Celsius
+    const temperature = Math.round((94 - 32) * 5 / 9) + " centigrade"; // Convert Fahrenheit to centigrade
     newStory = newStory.replace("300 pounds", weight);
     newStory = newStory.replace("94 Fahrenheit", temperature);
   }

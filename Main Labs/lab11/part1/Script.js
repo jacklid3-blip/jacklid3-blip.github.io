@@ -18,14 +18,27 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`; // Return random color string
 }
 
-class Ball {
+// Reference to ball count paragraph
+const para = document.querySelector("p");
+let count = 0; // Ball count
+
+// Shape class - parent class for Ball and EvilCircle
+class Shape {
+  constructor(x, y, velX, velY) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+  }
+}
+
+// Ball class extends Shape
+class Ball extends Shape {
   constructor(x, y, velX, velY, color, size) {
-    this.x = x;         // X position
-    this.y = y;         // Y position
-    this.velX = velX;   // X velocity
-    this.velY = velY;   // Y velocity
-    this.color = color; // Ball color
-    this.size = size;   // Ball radius
+    super(x, y, velX, velY);  // Call parent constructor
+    this.color = color;
+    this.size = size;
+    this.exists = true;       // Track if ball exists
   }
 
   draw() {
@@ -58,7 +71,7 @@ class Ball {
 
   collisionDetect() {
     for (const ball of balls) {
-      if (!(this === ball)) {                           // Skip self
+      if (!(this === ball) && ball.exists) {            // Skip self and non-existing balls
         const dx = this.x - ball.x;                     // X distance
         const dy = this.y - ball.y;                     // Y distance
         const distance = Math.sqrt(dx * dx + dy * dy);  // Calculate distance
@@ -87,16 +100,21 @@ while (balls.length < 25) { // Create 25 balls
   );
 
   balls.push(ball);
+  count++;                        // Increment ball count
 }
+
+para.textContent = "Ball count: " + count;  // Display initial count
 
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)"; // Semi-transparent black
   ctx.fillRect(0, 0, width, height);      // Draw trail effect
 
   for (const ball of balls) {
-    ball.draw();           // Draw ball
-    ball.update();         // Update position
-    ball.collisionDetect(); // Check collisions
+    if (ball.exists) {           // Only process existing balls
+      ball.draw();               // Draw ball
+      ball.update();             // Update position
+      ball.collisionDetect();    // Check collisions
+    }
   }
 
   requestAnimationFrame(loop); // Next animation frame

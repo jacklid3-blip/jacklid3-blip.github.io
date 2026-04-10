@@ -9,8 +9,6 @@ function randomValueFromArray(array) {
   return array[random]; // Return random element
 }
 
-// Raw text strings
-
 // Arrays of random story elements
 const characters = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
 const places = ["the soup kitchen", "Disneyland", "the White House"];
@@ -35,16 +33,24 @@ function returnRandomStoryString() {
 generateBtn.addEventListener("click", generateStory); // Call generateStory when clicked
 
 function generateStory() {
+  // Create a new random story
+  let newStory = returnRandomStoryString();
+
+  // Replace "Bob" with custom name if provided
   if (customName.value !== "") {
     const name = customName.value;
+    newStory = newStory.replace("Bob", name);
   }
 
+  // Convert to UK units if UK locale selected
   if (document.getElementById("uk").checked) {
-    const weight = Math.round(300);
-    const temperature = Math.round(94);
+    const weight = Math.round(300 / 14) + " stone";         // Convert pounds to stone
+    const temperature = Math.round((94 - 32) * 5 / 9) + " Celsius"; // Convert Fahrenheit to Celsius
+    newStory = newStory.replace("300 pounds", weight);
+    newStory = newStory.replace("94 Fahrenheit", temperature);
   }
 
-  // TODO: replace "" with the correct expression
-  story.textContent = "";
+  // Display the story
+  story.textContent = newStory;
   story.style.visibility = "visible";
 }

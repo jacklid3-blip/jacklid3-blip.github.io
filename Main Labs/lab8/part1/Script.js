@@ -1,12 +1,12 @@
 // Complete variable definitions and random functions
 
-const customName = document.getElementById("custom-name");
-const generateBtn = document.querySelector(".generate");
-const story = document.querySelector(".story");
+const customName = document.getElementById("custom-name"); // Input field for custom name
+const generateBtn = document.querySelector(".generate");    // Generate button
+const story = document.querySelector(".story");             // Output paragraph
 
 function randomValueFromArray(array) {
-  const random = Math.floor(Math.random() * array.length);
-  return array[random];
+  const random = Math.floor(Math.random() * array.length); // Get random index
+  return array[random]; // Return random element
 }
 
 // Raw text strings
@@ -33,7 +33,7 @@ function returnRandomStoryString() {
 
 // Event listener and partial generate function definition
 
-generateBtn.addEventListener("click", generateStory);
+generateBtn.addEventListener("click", generateStory); // Call generateStory when clicked
 
 function generateStory() {
   if (customName.value !== "") {

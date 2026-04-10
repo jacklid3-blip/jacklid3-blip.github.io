@@ -3,10 +3,10 @@
 body {
   background-color: white;
   color: #333333;
-  font: 1em / 1.4 system-ui;
+  font: 1em / 1.4 system-ui; /* Font size / line-height font-family */
   padding: 1em;
   width: 800px;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the body */
 }
 
 h1 {
@@ -24,7 +24,7 @@ h2 {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Include padding/border in width */
 }
 
 p {
@@ -35,7 +35,7 @@ p {
 /* Form structure */
 
 fieldset {
-  border: 0;
+  border: 0;  /* Remove default border */
   padding: 0;
 }
 
@@ -78,16 +78,16 @@ textarea {
 }
 
 .separator {
-  display: flex;
+  display: flex; /* Flexbox for label/input alignment */
 }
 
 .separator label {
-  flex: 2;
+  flex: 2; /* Label takes 2 parts of space */
 }
 
 .separator input,
 .separator select {
-  flex: 3;
+  flex: 3; /* Input takes 3 parts of space */
   padding: 5px;
 }
 
@@ -97,7 +97,7 @@ button {
   border: 1px solid grey;
   background-color: #dddddd;
   width: 50%;
-  margin: 0 auto;
+  margin: 0 auto;  /* Center button */
   display: block;
 }
 

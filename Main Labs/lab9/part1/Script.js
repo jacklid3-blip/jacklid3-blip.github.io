@@ -34,3 +34,22 @@ for (const image of images) {
     }
   });
 }
+
+// Function to update the displayed image when thumbnail is clicked
+function updateDisplayedImage(e) {
+  displayedImage.src = e.target.src;   // Set main image src to clicked thumbnail src
+  displayedImage.alt = e.target.alt;   // Set main image alt to clicked thumbnail alt
+}
+
+// Darken/Lighten button click handler
+btn.addEventListener("click", function() {
+  if (btn.classList.contains("dark")) {
+    btn.textContent = "Lighten";                      // Change button text
+    overlay.style.backgroundColor = "rgb(0 0 0 / 0.5)"; // Add dark overlay
+    btn.classList.remove("dark");                     // Remove dark class
+  } else {
+    btn.textContent = "Darken";                       // Change button text
+    overlay.style.backgroundColor = "rgb(0 0 0 / 0)"; // Remove dark overlay
+    btn.classList.add("dark");                        // Add dark class
+  }
+});

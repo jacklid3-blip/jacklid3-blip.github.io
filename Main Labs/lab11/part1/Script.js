@@ -84,6 +84,75 @@ class Ball extends Shape {
   }
 }
 
+// EvilCircle class extends Shape - player controlled circle that eats balls
+class EvilCircle extends Shape {
+  constructor(x, y) {
+    super(x, y, 20, 20);      // Call parent with fixed velocity
+    this.color = "white";
+    this.size = 10;
+
+    // Keyboard controls for movement
+    window.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "a":
+          this.x -= this.velX;
+          break;
+        case "d":
+          this.x += this.velX;
+          break;
+        case "w":
+          this.y -= this.velY;
+          break;
+        case "s":
+          this.y += this.velY;
+          break;
+      }
+    });
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.lineWidth = 3;                                    // Thicker stroke
+    ctx.strokeStyle = this.color;                         // Use stroke instead of fill
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    ctx.stroke();                                         // Draw outline only
+  }
+
+  checkBounds() {
+    if (this.x + this.size >= width) {   // Hit right edge
+      this.x = width - this.size;        // Push back onto screen
+    }
+
+    if (this.x - this.size <= 0) {       // Hit left edge
+      this.x = this.size;                // Push back onto screen
+    }
+
+    if (this.y + this.size >= height) {  // Hit bottom edge
+      this.y = height - this.size;       // Push back onto screen
+    }
+
+    if (this.y - this.size <= 0) {       // Hit top edge
+      this.y = this.size;                // Push back onto screen
+    }
+  }
+
+  collisionDetect() {
+    for (const ball of balls) {
+      if (ball.exists) {                                  // Only check existing balls
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < this.size + ball.size) {          // If collision detected
+          ball.exists = false;                            // Ball no longer exists
+          count--;                                        // Decrement ball count
+          para.textContent = "Ball count: " + count;      // Update display
+        }
+      }
+    }
+  }
+}
+
 const balls = []; // Array to store all balls
 
 while (balls.length < 25) { // Create 25 balls
@@ -105,6 +174,9 @@ while (balls.length < 25) { // Create 25 balls
 
 para.textContent = "Ball count: " + count;  // Display initial count
 
+// Create the evil circle (player controlled)
+const evilBall = new EvilCircle(random(0, width), random(0, height));
+
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)"; // Semi-transparent black
   ctx.fillRect(0, 0, width, height);      // Draw trail effect
@@ -116,6 +188,11 @@ function loop() {
       ball.collisionDetect();    // Check collisions
     }
   }
+
+  // Evil circle methods
+  evilBall.draw();
+  evilBall.checkBounds();
+  evilBall.collisionDetect();
 
   requestAnimationFrame(loop); // Next animation frame
 }

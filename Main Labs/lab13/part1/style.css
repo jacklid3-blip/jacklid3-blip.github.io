@@ -20,10 +20,11 @@ body {
 
 /* || typography */
 
-/* Apply the decorative font to all legacy <font> heading elements */
-font[size="7"], font[size="6"], font[size="5"] {
+/* Apply the decorative font to all heading elements */
+h1, h2, h3 {
   font-family: 'Sonsie One', cursive;
   color: #2a2a2a;
+  margin: 0;
 }
 
 /* Apply the body font to common text elements - color blind friendly text */
@@ -33,21 +34,22 @@ p, input, li, table, label {
 }
 
 /* Page title: large white text with a drop shadow */
-font[size="7"] {
+h1 {
   font-size: 4rem;
   text-align: center;
   color: white;
   text-shadow: 2px 2px 10px black;
+  padding: 1rem 0;
 }
 
 /* Section headings: centred, medium-large size */
-font[size="6"] {
+h2 {
   font-size: 3rem;
   text-align: center;
 }
 
 /* Sub-section headings: slightly smaller */
-font[size="5"] {
+h3 {
   font-size: 2.2rem;
 }
 
@@ -275,12 +277,12 @@ audio {
 }
 
 /* Smaller heading size inside the comments section */
-.comments font[size="6"] {
+.comments h2 {
   font-size: 2rem;
 }
 
 /* Remove bottom margin from the second heading ("Comments") */
-.comments font[size="6"]:nth-of-type(2) {
+.comments h2:nth-of-type(2) {
   margin-bottom: 0;
 }
 

@@ -7,7 +7,7 @@ html, body {
 
 /* Set base font size and background colour for the page */
 html {
-  font-size: 10px;
+  font-size: 18px;
   background-color: #dde;
 }
 
@@ -26,10 +26,10 @@ font[size="7"], font[size="6"], font[size="5"] {
   color: #2a2a2a;
 }
 
-/* Apply the body font to common text elements */
+/* Apply the body font to common text elements - color blind friendly text */
 p, input, li, table, label {
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #2a2a2a;
+  color: #1e293b;
 }
 
 /* Page title: large white text with a drop shadow */
@@ -52,16 +52,27 @@ font[size="5"] {
 }
 
 /* Body text sizing and line-height for readability */
-p, li, table {
-  font-size: 1.6rem;
-  line-height: 1.5;
+p, li, table, article {
+  font-size: 1.8rem;
+  line-height: 1.6;
 }
 
 /* || header layout */
 
-/* Give the nav bar, article, footer, and sidebar a green background */
-nav, article, footer, .secondary {
-  background-color: green;
+/* Color blind friendly navigation and content backgrounds */
+nav {
+  background-color: #1e3a8a;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5% 1em;
+  margin-bottom: 10px;
+}
+
+article, footer, .secondary {
+  background-color: #f8fafc;
+  color: #1e293b;
 }
 
 /* Add padding to the main content areas */
@@ -74,21 +85,18 @@ article {
   margin-right: 10px;
 }
 
-/* Navigation bar: fixed height, flex layout, spaced below the header */
-nav {
-  height: 50px;
-  background-color: ff80ff;
-  display: flex;
-  padding: 1% 0;
-  margin-bottom: 10px;
-}
+/* Navigation bar: flex layout already set above */
+
 
 /* Remove default list styling and distribute nav links evenly */
 nav ul {
   padding: 0;
+  margin: 0;
   list-style-type: none;
-  flex: 2;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
 }
 
 /* Each nav item takes equal space */
@@ -98,22 +106,33 @@ nav li {
   flex: 1;
 }
 
-/* Nav link styling: uppercase, no underline, black text */
+/* Nav link styling: uppercase, no underline, white text for contrast */
 nav a {
   display: inline-block;
   font-size: 2rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
-/* Search form sits inline at the right end of the nav bar */
+/* Nav link hover and focus states - color blind friendly */
+nav a:hover,
+nav a:focus {
+  background-color: #f59e0b;
+  color: #1e293b;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Search form sits at the right end of the nav bar */
 nav .search {
-  flex: 1;
   display: flex;
   align-items: center;
-  height: 100%;
-  padding: 0 2em;
+  gap: 0.5rem;
+  padding: 0 0.5em;
 }
 
 /* Base height for search inputs */
@@ -125,15 +144,38 @@ nav .search {
 /* Search text input takes up most of the available width */
 .search input[type="search"] {
   flex: 3;
+  min-width: 0;
 }
 
-/* Search submit button: dark background, no border, white text */
+/* Search submit button: color blind friendly orange */
 .search input[type="submit"] {
-  flex: 1;
-  margin-left: 1rem;
-  background: #333;
+  background: #f59e0b;
   border: 0;
-  color: white;
+  color: #1e293b;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  padding: 0 1.2rem;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Search submit button hover and focus - color blind friendly */
+.search input[type="submit"]:hover,
+.search input[type="submit"]:focus {
+  background: #d97706;
+  outline: 3px solid #1e3a8a;
+  outline-offset: 2px;
+}
+
+/* Search input focus state - color blind friendly */
+.search input[type="search"]:focus {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+  border: 2px solid #f59e0b;
 }
 
 /* || main layout */
@@ -280,11 +322,33 @@ audio {
   line-height: 32px;
 }
 
-/* Dark style for submit button and show/hide toggle */
+/* Color blind friendly buttons - blue and orange theme */
 .comment-form input[type="submit"], .show-hide {
-  background: #333;
+  background: #1e3a8a;
   border: 0;
   color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+/* Focus and hover states for buttons - color blind friendly */
+.comment-form input[type="submit"]:hover,
+.comment-form input[type="submit"]:focus,
+.show-hide:hover,
+.show-hide:focus {
+  background: #f59e0b;
+  color: #1e293b;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Form input focus states - color blind friendly */
+.comment-form input[type="text"]:focus {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+  border: 2px solid #f59e0b;
 }
 
 /* Centre the submit button and limit its width */
@@ -292,6 +356,34 @@ audio {
   width: 30%;
   display: block;
   margin: 0 auto;
+}
+
+/* Audio transcript styling */
+details {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  color: #1e3a8a;
+}
+
+details summary:hover,
+details summary:focus {
+  color: #f59e0b;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
 }
 
 /* Remove top margin from the comment list */

@@ -27,7 +27,7 @@
     </div>
 
     <!-- Navigation bar: site links and search form -->
-    <div class="nav">
+    <nav>
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Our team</a></li>
@@ -37,10 +37,11 @@
 
       <!-- Search form for querying site content -->
       <form class="search">
-        <input type="search" name="q" placeholder="Search query">
+        <label for="search-input" class="sr-only">Search the website:</label>
+        <input type="search" name="q" id="search-input" placeholder="Search query">
         <input type="submit" value="Go!">
       </form>
-    </div>
+    </nav>
 
     <!-- Main content area: article + sidebar -->
     <main>
@@ -64,14 +65,15 @@
 
         <!-- Data table comparing wild bears vs urban bears -->
         <table>
+          <caption>Comparison of Wild Bears vs Urban Bears</caption>
           <thead>
             <tr>
-              <td>Bear Type</td>
-              <td>Coat</td>
-              <td>Adult size</td>
-              <td>Habitat</td>
-              <td>Lifespan</td>
-              <td>Diet</td>
+              <th scope="col">Bear Type</th>
+              <th scope="col">Coat</th>
+              <th scope="col">Adult size</th>
+              <th scope="col">Habitat</th>
+              <th scope="col">Lifespan</th>
+              <th scope="col">Diet</th>
             </tr>
           </thead>
           <tbody>
@@ -137,20 +139,20 @@
         <!-- Comments section: toggle visibility, submit new comments, display existing ones -->
         <section class="comments">
           <!-- Button to show/hide the comment wrapper; toggled by main.js -->
-          <div class="show-hide">Show comments</div>
+          <button class="show-hide" type="button" tabindex="0" aria-expanded="false" aria-controls="comment-wrapper">Show comments</button>
 
-          <div class="comment-wrapper">
+          <div class="comment-wrapper" id="comment-wrapper">
 
             <font size="6">Add comment</font>
 
             <!-- Comment submission form: name + comment fields -->
             <form class="comment-form">
               <div class="flex-pair">
-                Your name:
+                <label for="name">Your name:</label>
                 <input type="text" name="name" id="name" placeholder="Enter your name">
               </div>
               <div class="flex-pair">
-                Your comment:
+                <label for="comment">Your comment:</label>
                 <input type="text" name="comment" id="comment" placeholder="Enter your comment">
               </div>
               <div>

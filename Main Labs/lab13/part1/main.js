@@ -11,17 +11,33 @@ commentWrapper.style.display = 'none';
 
 // Toggle the comment wrapper visibility when the button is clicked
 showHideBtn.onclick = function() {
-  let showHideText = showHideBtn.textContent;
-  if(showHideText === 'Show comments') {
-    // Reveal comments and update button label
-    showHideBtn.textContent = 'Hide comments';
-    commentWrapper.style.display = 'block';
-  } else {
-    // Hide comments and reset button label
-    showHideBtn.textContent = 'Show comments';
-    commentWrapper.style.display = 'none';
+  toggleComments();
+};
+
+// Add keyboard accessibility for the show/hide button
+showHideBtn.onkeydown = function(e) {
+  // Activate on Enter or Space key
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggleComments();
   }
 };
+
+// Function to toggle comment visibility and update ARIA attributes
+function toggleComments() {
+  let showHideText = showHideBtn.textContent;
+  if(showHideText === 'Show comments') {
+    // Reveal comments and update button label and ARIA
+    showHideBtn.textContent = 'Hide comments';
+    showHideBtn.setAttribute('aria-expanded', 'true');
+    commentWrapper.style.display = 'block';
+  } else {
+    // Hide comments and reset button label and ARIA
+    showHideBtn.textContent = 'Show comments';
+    showHideBtn.setAttribute('aria-expanded', 'false');
+    commentWrapper.style.display = 'none';
+  }
+}
 
 // =============================================
 // Comment Form Submission

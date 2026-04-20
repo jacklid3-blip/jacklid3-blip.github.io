@@ -20,10 +20,13 @@
   </head>
 
   <body>
+
+    <!-- Site header: displays the main page title -->
     <div class="header">
       <font size="7">Welcome to our wildlife website</font>
     </div>
 
+    <!-- Navigation bar: site links and search form -->
     <div class="nav">
       <ul>
         <li><a href="#">Home</a></li>
@@ -32,13 +35,17 @@
         <li><a href="#">Blog</a></li>
       </ul>
 
+      <!-- Search form for querying site content -->
       <form class="search">
         <input type="search" name="q" placeholder="Search query">
         <input type="submit" value="Go!">
       </form>
     </div>
 
+    <!-- Main content area: article + sidebar -->
     <main>
+
+      <!-- Primary article about bears -->
       <article>
         <font size="6">The trouble with Bears</font>
         <br><br>
@@ -54,6 +61,8 @@
         <br><br>
         Bears can also be classified in terms of their habitat — both large and medium bears are just as at home in urban areas as they are in the countryside. Different habitats encourange different behaviour however, as you'll find out below. The below table also gives you some useful facts about bears.
         <br><br>
+
+        <!-- Data table comparing wild bears vs urban bears -->
         <table>
           <thead>
             <tr>
@@ -66,6 +75,7 @@
             </tr>
           </thead>
           <tbody>
+            <!-- Wild bear row -->
             <tr>
               <td>Wild</td>
               <td>Brown or black</td>
@@ -74,6 +84,7 @@
               <td>25 to 28 years</td>
               <td>Fish, meat, plants</td>
             </tr>
+            <!-- Urban bear row -->
             <tr>
               <td>Urban</td>
               <td>North Face</td>
@@ -89,10 +100,12 @@
         <br><br>
         Wild bears eat a variety of meat, fish, fruit, nuts, and other natually growing ingredients. In general they will hunt for food themselves in woodland or rivers, but at a push they will track down their sustenance from farms or country houses. They tend to live in relative isolation, in caves, tents, or cottages.
         <br><br>
+        <!-- Image of a wild bear in its natural habitat -->
         <img src="media/wild-bear.jpg">
         <br><br>
         Urban (gentrified) bears on the other hand have largely abandoned the old ways. They will hunt other urban creatures if necessary (including other predators like rats and foxes), but prefer to scavenge from readily available urban food outlets like dumpsters, bins, and fast food joints. When food has proven scarce, urban bears have even been known to break into people's kitchens and steal essentials like baked beans, ready meals, and microwave ovens.
         <br><br>
+        <!-- Image of an urban bear in its city habitat -->
         <img src="media/urban-bear.jpg">
         <br><br>
         Urban bears will sleep anywhere they can, from bus shelters and parks, to the toilets in McDonalds, to their own apartment.
@@ -103,12 +116,14 @@
         <br><br>
         The following audio clip contains a fact file providing more details about bear mating rituals, along with samples and quotes from experts.
         <br><br>
+        <!-- Audio player: bear mating rituals fact file (mp3 + ogg fallback) -->
         <audio controls>
           <source src="media/bear.mp3" type="audio/mp3">
           <source src="media/bear.ogg" type="audio/ogg">
           <p>It looks like your browser doesn't support HTML5 audio players.</p>
         </audio>
 
+        <!-- Aside: short author biography -->
         <aside>
 
           <font size="5">About the author</font>
@@ -118,13 +133,17 @@
           He has never seen a bear, but once read a Daily Mail article about them, and thinks they sound cool.
 
         </aside>
+
+        <!-- Comments section: toggle visibility, submit new comments, display existing ones -->
         <section class="comments">
+          <!-- Button to show/hide the comment wrapper; toggled by main.js -->
           <div class="show-hide">Show comments</div>
 
           <div class="comment-wrapper">
 
             <font size="6">Add comment</font>
 
+            <!-- Comment submission form: name + comment fields -->
             <form class="comment-form">
               <div class="flex-pair">
                 Your name:
@@ -141,6 +160,7 @@
 
             <font size="6">Comments</font>
 
+            <!-- List of existing comments; new comments are appended here by main.js -->
             <ul class="comment-container">
 
               <li>
@@ -157,6 +177,7 @@
         </section>
       </article>
 
+      <!-- Sidebar: related articles -->
       <div class="secondary">
         <font size="6">Related</font>
 
@@ -170,10 +191,12 @@
       </div>
     </main>
 
+    <!-- Page footer -->
     <footer>
       <p>©Copyright 2050 by nobody. All rights reversed.</p>
     </footer>
 
+    <!-- Main JavaScript: handles comment toggle and form submission -->
     <script src="main.js"></script>
 
   </body>

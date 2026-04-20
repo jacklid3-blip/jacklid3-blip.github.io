@@ -1,15 +1,17 @@
 /* || General setup */
-
+/* Remove default margin and padding from all elements */
 html, body {
   margin: 0;
   padding: 0;
 }
 
+/* Set base font size and background colour for the page */
 html {
   font-size: 10px;
   background-color: #dde;
 }
 
+/* Center the page content and constrain its width */
 body {
   width: 80%;
   min-width: 1024px;
@@ -18,16 +20,19 @@ body {
 
 /* || typography */
 
+/* Apply the decorative font to all legacy <font> heading elements */
 font[size="7"], font[size="6"], font[size="5"] {
   font-family: 'Sonsie One', cursive;
   color: #2a2a2a;
 }
 
+/* Apply the body font to common text elements */
 p, input, li, table, label {
   font-family: 'Open Sans Condensed', sans-serif;
   color: #2a2a2a;
 }
 
+/* Page title: large white text with a drop shadow */
 font[size="7"] {
   font-size: 4rem;
   text-align: center;
@@ -35,15 +40,18 @@ font[size="7"] {
   text-shadow: 2px 2px 10px black;
 }
 
+/* Section headings: centred, medium-large size */
 font[size="6"] {
   font-size: 3rem;
   text-align: center;
 }
 
+/* Sub-section headings: slightly smaller */
 font[size="5"] {
   font-size: 2.2rem;
 }
 
+/* Body text sizing and line-height for readability */
 p, li, table {
   font-size: 1.6rem;
   line-height: 1.5;
@@ -51,18 +59,22 @@ p, li, table {
 
 /* || header layout */
 
+/* Give the nav bar, article, footer, and sidebar a green background */
 div[class="nav"], article, footer, .secondary {
   background-color: green;
 }
 
+/* Add padding to the main content areas */
 article, footer, .secondary {
   padding: 10px 30px;
 }
 
+/* Add right margin to the article to create spacing from the sidebar */
 article {
   margin-right: 10px;
 }
 
+/* Navigation bar: fixed height, flex layout, spaced below the header */
 div[class="nav"] {
   height: 50px;
   background-color: ff80ff;
@@ -71,6 +83,7 @@ div[class="nav"] {
   margin-bottom: 10px;
 }
 
+/* Remove default list styling and distribute nav links evenly */
 div[class="nav"] ul {
   padding: 0;
   list-style-type: none;
@@ -78,12 +91,14 @@ div[class="nav"] ul {
   display: flex;
 }
 
+/* Each nav item takes equal space */
 div[class="nav"] li {
   display: inline;
   text-align: center;
   flex: 1;
 }
 
+/* Nav link styling: uppercase, no underline, black text */
 div[class="nav"] a {
   display: inline-block;
   font-size: 2rem;
@@ -92,6 +107,7 @@ div[class="nav"] a {
   color: black;
 }
 
+/* Search form sits inline at the right end of the nav bar */
 div[class="nav"] .search {
   flex: 1;
   display: flex;
@@ -100,15 +116,18 @@ div[class="nav"] .search {
   padding: 0 2em;
 }
 
+/* Base height for search inputs */
 .search input {
   font-size: 1.6rem;
   height: 32px;
 }
 
+/* Search text input takes up most of the available width */
 .search input[type="search"] {
   flex: 3;
 }
 
+/* Search submit button: dark background, no border, white text */
 .search input[type="submit"] {
   flex: 1;
   margin-left: 1rem;
@@ -119,10 +138,12 @@ div[class="nav"] .search {
 
 /* || main layout */
 
+/* Main content uses flexbox to place article and sidebar side by side */
 main {
   display: flex;
 }
 
+/* Article takes up more space than the sidebar (5:2 ratio) */
 article {
   flex: 5;
 }
@@ -131,120 +152,144 @@ article {
   flex: 2;
 }
 
+/* Add top margin to separate footer from content */
 footer {
   margin-top: 10px;
 }
 
 /* Table styling */
 
+/* Full-width table with collapsed borders and a light background */
 table {
   width: 100%;
   background-color: #dde;
   border-collapse: collapse;
 }
 
+/* Cell padding for readability */
 th, td {
   padding: 10px;
 }
 
+/* Centre-align data cells */
 td {
   text-align: center;
 }
 
+/* Underline column header cells */
 th[scope="col"] {
   border-bottom: 1px solid black;
 }
 
+/* Zebra striping for table rows */
 tbody tr:nth-child(odd) {
   background-color: #def;
 }
 
 /* styling content images and audio */
 
+/* Centre images and the audio player */
 img, audio {
   display: block;
   margin: 0 auto;
 }
 
+/* Fixed width for the audio player */
 audio {
   width: 500px;
 }
 
 /* Comments styling */
 
+/* Comments section: light blue background with padding */
 .comments {
   background-color: #def;
   padding: 10px;
 }
 
+/* Make the show/hide toggle look clickable */
 .show-hide {
   cursor: pointer;
 }
 
+/* Smaller heading size inside the comments section */
 .comments font[size="6"] {
   font-size: 2rem;
 }
 
+/* Remove bottom margin from the second heading ("Comments") */
 .comments font[size="6"]:nth-of-type(2) {
   margin-bottom: 0;
 }
 
+/* Space below the comment form */
 .comment-form {
   margin-bottom: 3rem;
 }
 
+/* Flex layout for each label+input pair in the form */
 .comment-form .flex-pair {
   display: flex;
   padding: 0 3rem 1rem;
 }
 
+/* Right-align labels and give them less space than inputs */
 .comment-form label {
   align-self: center;
   flex: 2;
   text-align: right;
 }
 
+/* Inputs take up most of the row width */
 .comment-form input {
   margin-left: 1rem;
   flex: 6;
 }
 
+/* Centre the show/hide button with a fixed width */
 .show-hide {
   text-align: center;
   width: 150px;
 }
 
+/* Consistent font size and line height for form inputs, labels, and the toggle button */
 .comment-form input, .comment-form label, .show-hide {
   font-size: 1.6rem;
   line-height: 32px;
 }
 
+/* Dark style for submit button and show/hide toggle */
 .comment-form input[type="submit"], .show-hide {
   background: #333;
   border: 0;
   color: white;
 }
 
+/* Centre the submit button and limit its width */
 .comment-form input[type="submit"] {
   width: 30%;
   display: block;
   margin: 0 auto;
 }
 
+/* Remove top margin from the comment list */
 .comment-container {
   margin-top: 0;
 }
 
+/* Lay out each comment as a horizontal flex row, no bullet points */
 .comment-container li {
   list-style-type: none;
   display: flex;
 }
 
+/* Author name column: bold, takes less width */
 .comment-container li p:nth-child(1) {
   flex: 1;
   font-weight: bold;
 }
 
+/* Comment text column: takes most of the row width */
 .comment-container li p:nth-child(2) {
   flex: 5;
 }

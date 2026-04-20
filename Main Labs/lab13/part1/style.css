@@ -61,6 +61,12 @@ p, li, table, article {
 
 /* || header layout */
 
+/* Site header: dark background to match the colour scheme */
+header {
+  background-color: #1e3a8a;
+  padding: 1rem 0;
+}
+
 /* Color blind friendly navigation and content backgrounds */
 nav {
   background-color: #1e3a8a;
